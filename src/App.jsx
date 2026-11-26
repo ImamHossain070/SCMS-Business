@@ -12,7 +12,13 @@ import Footer from './components/Footer';
 import { useTelemetryStream } from './hooks/useTelemetryStream';
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(() => {
+    try {
+      const stored = localStorage.getItem('scms_dark_mode');
+      if (stored !== null) return stored === 'true';
+    } catch (e) {}
+    return false;
+  });
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [adminModalOpen, setAdminModalOpen] = useState(false);
   const [selectedModule, setSelectedModule] = useState('');
@@ -31,6 +37,9 @@ export default function App() {
     } else {
       root.classList.remove('dark');
     }
+    try {
+      localStorage.setItem('scms_dark_mode', String(darkMode));
+    } catch (e) {}
   }, [darkMode]);
 
   const handleOpenModuleBooking = (moduleShortTitle) => {
