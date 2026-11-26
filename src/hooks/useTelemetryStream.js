@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { wsUrl } from '../lib/api';
 
 const SIMULATED_EVENTS = [
