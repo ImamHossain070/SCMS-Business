@@ -1,5 +1,4 @@
 import React from 'react';
-import { ShieldCheck } from 'lucide-react';
 
 export default function Footer({ onOpenAdmin }) {
   return (
@@ -8,9 +7,7 @@ export default function Footer({ onOpenAdmin }) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-slate-200 dark:border-slate-800">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center text-slate-950">
-                <ShieldCheck className="w-4 h-4 stroke-[2.3]" />
-              </div>
+              <img src="/logo.jpg" alt="SCMS" className="w-8 h-8 rounded-lg object-cover" />
               <span className="font-display font-bold text-base text-slate-900 dark:text-white">
                 SCMS<span className="text-cyan-500">.ai</span>
               </span>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, Sun, Moon, Menu, X, ArrowUpRight, Radio, Lock } from 'lucide-react';
+import { Sun, Moon, Menu, X, ArrowUpRight, Radio, Lock } from 'lucide-react';
 
 export default function Navbar({ darkMode, setDarkMode, onOpenBooking, onOpenAdmin, wsConnected }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -17,14 +17,11 @@ export default function Navbar({ darkMode, setDarkMode, onOpenBooking, onOpenAdm
     <header className="sticky top-0 z-50 border-b border-slate-200/70 dark:border-cyan-500/15 bg-white/80 dark:bg-[#050914]/80 backdrop-blur-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         <a href="#" className="flex items-center gap-2.5 group">
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center text-slate-950 shadow-lg shadow-cyan-500/20">
-            <ShieldCheck className="w-5 h-5 stroke-[2.3]" />
-            <motion.span
-              animate={{ scale: [1, 1.35, 1], opacity: [0.7, 0, 0.7] }}
-              transition={{ duration: 2.2, repeat: Infinity }}
-              className="absolute inset-0 rounded-xl border border-cyan-400"
-            />
-          </div>
+          <img
+            src="/logo.jpg"
+            alt="SCMS"
+            className="w-9 h-9 rounded-xl object-cover shadow-lg shadow-cyan-500/20"
+          />
           <div className="leading-tight">
             <span className="font-display font-bold text-lg tracking-tight text-slate-900 dark:text-white">
               SCMS<span className="text-cyan-500">.ai</span>

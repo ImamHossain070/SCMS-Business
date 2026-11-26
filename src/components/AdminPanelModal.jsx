@@ -14,7 +14,6 @@ import {
   Building2,
   Camera,
   Loader2,
-  ShieldCheck,
 } from 'lucide-react';
 
 import { apiUrl } from '../lib/api';
@@ -210,9 +209,9 @@ export default function AdminPanelModal({ open, onClose }) {
           >
             <div className="flex items-center justify-between gap-4 pb-4 mb-6 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center text-slate-950">
-                  <ShieldCheck className="w-5 h-5" />
-                </div>
+<div className="w-9 h-9 rounded-xl overflow-hidden">
+                    <img src="/logo.jpg" alt="SCMS" className="w-full h-full object-cover" />
+                  </div>
                 <div>
                   <h3 className="font-display text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
                     SCMS Admin Portal
