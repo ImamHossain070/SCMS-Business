@@ -17,7 +17,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 
-const STORAGE_BOOKINGS_KEY = 'scms_bookings';
+import { apiUrl } from '../lib/api';
 const STORAGE_CONTACTS_KEY = 'scms_contacts';
 const STORAGE_TOKEN_KEY = 'scms_admin_token';
 
@@ -54,7 +54,7 @@ export default function AdminPanelModal({ open, onClose }) {
     if (!activeToken) return;
     setLoading(true);
     try {
-      const res = await fetch('/api/admin/data', {
+      const res = await fetch(apiUrl('/api/admin/data'), {
         headers: { Authorization: `Bearer ${activeToken}` },
       });
       if (res.status === 401) {
@@ -87,7 +87,7 @@ export default function AdminPanelModal({ open, onClose }) {
     setAuthError('');
     setLoggingIn(true);
     try {
-      const res = await fetch('/api/admin/login', {
+      const res = await fetch(apiUrl('/api/admin/login'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim(), password }),
@@ -129,7 +129,7 @@ export default function AdminPanelModal({ open, onClose }) {
     );
     if (dataSource === 'api') {
       try {
-        await fetch(`/api/admin/bookings/${referenceId}`, {
+        await fetch(apiUrl(`/api/admin/bookings/${referenceId}`), {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -152,7 +152,7 @@ export default function AdminPanelModal({ open, onClose }) {
     setBookings((prev) => prev.filter((b) => b.reference_id !== referenceId));
     if (dataSource === 'api') {
       try {
-        await fetch(`/api/admin/bookings/${referenceId}`, {
+        await fetch(apiUrl(`/api/admin/bookings/${referenceId}`), {
           method: 'DELETE',
           headers: { Authorization: `Bearer ${token}` },
         });

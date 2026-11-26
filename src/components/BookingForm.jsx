@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Calendar, Building, Camera, Sparkles, Loader2 } from 'lucide-react';
 import { DETECTION_DOMAINS } from '../data/scmsData';
+import { apiUrl } from '../lib/api';
 
 export default function BookingForm({ initialModule = '', onSuccessClose }) {
   const [form, setForm] = useState({
@@ -68,7 +69,7 @@ export default function BookingForm({ initialModule = '', onSuccessClose }) {
     setSubmitting(true);
 
     try {
-      const res = await fetch('/api/bookings', {
+      const res = await fetch(apiUrl('/api/bookings'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

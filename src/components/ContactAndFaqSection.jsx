@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Send, CheckCircle2, Mail, MapPin, Phone, Loader2 } from 'lucide-react';
 import { FAQ_ITEMS } from '../data/scmsData';
+import { apiUrl } from '../lib/api';
 
 export default function ContactAndFaqSection() {
   const [openFaq, setOpenFaq] = useState(0);
@@ -34,7 +35,7 @@ export default function ContactAndFaqSection() {
     }
     setSending(true);
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(apiUrl('/api/contact'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(contact),

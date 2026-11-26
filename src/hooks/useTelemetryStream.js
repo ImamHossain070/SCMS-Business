@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { wsUrl } from '../lib/api';
 
 const SIMULATED_EVENTS = [
   { module: 'Fall Detection', zone: 'Engineering Wing - Lab B2', severity: 'critical', confidence: 0.96 },
@@ -69,8 +69,7 @@ export function useTelemetryStream() {
     };
 
     try {
-      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      ws = new WebSocket(`${protocol}//${window.location.host}/ws/telemetry`);
+      ws = new WebSocket(wsUrl('/ws/telemetry'));
       ws.onopen = () => {
         if (!isUnmounted) setConnected(true);
       };
